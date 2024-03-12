@@ -140,4 +140,7 @@ USE_TZ = os.environ.get('USE_TZ', True)
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+main_project_name = 'django_project'
 STATIC_URL = os.environ.get('STATIC_URL', '/static/')
+STATIC_ROOT = os.path.join(BASE_DIR, main_project_name, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, main_project_name, 'static')]

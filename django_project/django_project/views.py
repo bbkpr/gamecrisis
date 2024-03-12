@@ -61,7 +61,5 @@ helloWorld = """
 </body>
 </html>
 """
-
-
 def index(request):
-    return HttpResponse(helloWorld.replace("{IPADDRESS}",request.get_host()))
+    return HttpResponse(helloWorld.replace("{IPADDRESS}", request.get_host()))
