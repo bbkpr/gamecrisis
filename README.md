@@ -10,6 +10,7 @@ The application is written in Python and Django, with a more advanced React UI c
 * `nano /etc/nginx/sites-available/default`, update:
   * Set `server_name` to `yourdomain.tld www.yourdomain.tld`
   * Change the alias under `location /static` to `alias /home/django/django_project/django_project/staticfiles;`. This is due to the usage of `collectstatic` (documented under "Deploying to Production")
+  * Change the alias under `location /static/admin` to `/home/django/django_project/django_project/staticfiles/admin;`
 * `nano /root/.digitalocean_passwords`, update the values of:
   * `DJANGO_POSTGRES_PASS`: Set this to the same as the `DB_PASSWORD` you will set up in `/home/django/.profile` later in the document, under **Deploying to Production**.
   * `SECRET_KEY` and `DJANGO_SECRET_KEY`: Generate a secure string, 32 characters or longer.
