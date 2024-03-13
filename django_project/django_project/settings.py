@@ -146,3 +146,13 @@ main_project_name = 'django_project'
 STATIC_URL = os.environ.get('STATIC_URL', '/static/')
 STATIC_ROOT = os.path.join(BASE_DIR, main_project_name, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, main_project_name, 'static')]
+
+# settings.py
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+    ]
+}

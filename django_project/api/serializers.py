@@ -1,6 +1,7 @@
 # api/serializers.py
+from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Tag, Game, Character, Mechanic
+from .models import Tag, Game, Character, Mechanic, Rating, Review, User
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -32,3 +33,25 @@ class MechanicSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mechanic
         fields = ['id', 'name', 'games', 'tags']
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email']
+
+
+class RatingSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+
+    class Meta:
+        model = Rating
+        fields = ['id', 'user', 'game', 'rating']
+
+
+class ReviewSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+
+    class Meta:
+        model = Review
+        fields = ['id', 'user', 'game', 'title', 'content', 'created_at']

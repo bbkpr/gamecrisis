@@ -1,6 +1,7 @@
 # api/urls.py
 from django.urls import path
-from .views import TagList, TagDetail, GameList, GameDetail, CharacterList, CharacterDetail, MechanicList, MechanicDetail
+from .views import TagList, TagDetail, GameList, GameDetail, CharacterList, CharacterDetail, MechanicList, \
+    MechanicDetail, UserList, UserDetail, RatingList, RatingDetail, ReviewList, ReviewDetail
 
 urlpatterns = [
     path('tags/', TagList.as_view(), name='tag-list'),
@@ -11,4 +12,10 @@ urlpatterns = [
     path('characters/<int:pk>/', CharacterDetail.as_view(), name='character-detail'),
     path('mechanics/', MechanicList.as_view(), name='mechanic-list'),
     path('mechanics/<int:pk>/', MechanicDetail.as_view(), name='mechanic-detail'),
+    path('users/', UserList.as_view(), name='user-list'),
+    path('users/<int:pk>/', UserDetail.as_view(), name='user-detail'),
+    path('ratings/', RatingList.as_view(), name='rating-list'),
+    path('ratings/<int:pk>/', RatingDetail.as_view(), name='rating-detail'),
+    path('reviews/', ReviewList.as_view(), name='review-list'),
+    path('reviews/<int:pk>/', ReviewDetail.as_view(), name='review-detail'),
 ]

@@ -1,7 +1,9 @@
 # api/views.py
+from django.contrib.auth.models import User
 from rest_framework import generics
-from .models import Tag, Game, Character, Mechanic
-from .serializers import TagSerializer, GameSerializer, CharacterSerializer, MechanicSerializer
+from .models import Tag, Game, Character, Mechanic, Rating, Review
+from .serializers import TagSerializer, GameSerializer, CharacterSerializer, MechanicSerializer, UserSerializer, \
+    RatingSerializer, ReviewSerializer
 
 
 class TagList(generics.ListCreateAPIView):
@@ -43,3 +45,31 @@ class MechanicDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Mechanic.objects.all()
     serializer_class = MechanicSerializer
 
+class UserList(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class RatingList(generics.ListCreateAPIView):
+    queryset = Rating.objects.all()
+    serializer_class = RatingSerializer
+
+
+class RatingDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Rating.objects.all()
+    serializer_class = RatingSerializer
+
+
+class ReviewList(generics.ListCreateAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+
+
+class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
