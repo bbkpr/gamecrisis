@@ -1,12 +1,14 @@
 # api/urls.py
 from django.urls import path
-from . import views
+from .views import TagList, TagDetail, GameList, GameDetail, CharacterList, CharacterDetail, MechanicList, MechanicDetail
 
 urlpatterns = [
-    path('games/', views.GameList.as_view(), name='game-list'),
-    path('games/<int:pk>/', views.GameDetailView.as_view(), name='game-detail'),
-    path('characters/', views.CharacterList.as_view(), name='character-list'),
-    path('mechanics/', views.MechanicList.as_view(), name='mechanic-list'),
-    path('tags/', views.TagList.as_view(), name='tag-list'),
-    path('recommendations/', views.RecommendationView.as_view(), name='recommendation'),
+    path('tags/', TagList.as_view(), name='tag-list'),
+    path('tags/<int:pk>/', TagDetail.as_view(), name='tag-detail'),
+    path('games/', GameList.as_view(), name='game-list'),
+    path('games/<int:pk>/', GameDetail.as_view(), name='game-detail'),
+    path('characters/', CharacterList.as_view(), name='character-list'),
+    path('characters/<int:pk>/', CharacterDetail.as_view(), name='character-detail'),
+    path('mechanics/', MechanicList.as_view(), name='mechanic-list'),
+    path('mechanics/<int:pk>/', MechanicDetail.as_view(), name='mechanic-detail'),
 ]

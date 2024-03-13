@@ -9,6 +9,18 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def related_games(self):
+        return self.game_set.all()
+
+    @property
+    def related_characters(self):
+        return self.character_set.all()
+
+    @property
+    def related_mechanics(self):
+        return self.mechanic_set.all()
+
 
 class Game(models.Model):
     title = models.CharField(max_length=100)
@@ -19,10 +31,18 @@ class Game(models.Model):
     def __str__(self):
         return self.title
 
+    @property
+    def related_characters(self):
+        return self.character_set.all()
+
+    @property
+    def related_mechanics(self):
+        return self.mechanic_set.all()
+
 
 class Character(models.Model):
     name = models.CharField(max_length=100)
-    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    games = models.ManyToManyField(Game)
     tags = models.ManyToManyField(Tag)
 
     def __str__(self):
@@ -31,7 +51,7 @@ class Character(models.Model):
 
 class Mechanic(models.Model):
     name = models.CharField(max_length=100)
-    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    games = models.ManyToManyField(Game)
     tags = models.ManyToManyField(Tag)
 
     def __str__(self):

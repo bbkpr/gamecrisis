@@ -1,12 +1,12 @@
 # api/serializers.py
 from rest_framework import serializers
-from .models import Game, Character, Mechanic, Tag
+from .models import Tag, Game, Character, Mechanic
 
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ['id', 'name', 'weight']
+        fields = ['id', 'name', 'weight', 'related_games', 'related_characters', 'related_mechanics']
 
 
 class GameSerializer(serializers.ModelSerializer):
@@ -15,7 +15,7 @@ class GameSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Game
-        fields = ['id', 'title', 'description', 'tags', 'related_games']
+        fields = ['id', 'title', 'description', 'tags', 'related_games', 'related_characters', 'related_mechanics']
 
 
 class CharacterSerializer(serializers.ModelSerializer):
@@ -23,7 +23,7 @@ class CharacterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Character
-        fields = ['id', 'name', 'game', 'tags']
+        fields = ['id', 'name', 'games', 'tags']
 
 
 class MechanicSerializer(serializers.ModelSerializer):
@@ -31,4 +31,4 @@ class MechanicSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Mechanic
-        fields = ['id', 'name', 'game', 'tags']
+        fields = ['id', 'name', 'games', 'tags']
