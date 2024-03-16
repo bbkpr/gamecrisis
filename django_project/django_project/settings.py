@@ -29,6 +29,13 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'sh352igg1234itys6631higg6453ityshwa')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
+CORS_ALLOWED_ORIGINS = [
+    "https://bbkpr.com",
+    "https://gamecrisis.bbkpr.com",
+    "http://localhost:3000",
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 # Find out what the IP addresses are at run time
 # This is necessary because otherwise Gunicorn will reject the connections
@@ -54,10 +61,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api'
+    'corsheaders',
+    'api',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
